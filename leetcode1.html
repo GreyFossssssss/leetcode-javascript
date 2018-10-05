@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两数之和</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+ var twoSum = function(nums, target) {
+    for(var i =0;i<nums.length;i++){
+        for(var j =i+1;j<nums.length;j++){
+            if(nums[i]+nums[j]==target){
+                res[0] = i;
+                res[1] = j;
+                return res;
+            }
+        }
+    }
+};
+function minlength(S){
+var len=S.length;
+var res =0;
+for(let i =0;i<len;i++){
+    var str ='';
+    for(let j =i;j<len;j++){
+        var char = S.charAt(j);
+        console.log(char);
+        var index = str.indexOf(char);
+        console.log(index);
+        if(index>=0) break;
+        else if(index===-1){
+            str = str+char;
+            console.log(str);
+            if(str.length>res){
+                res = str.length;
+            }
+        }
+}   
+}
+return res;
+}
+console.log(minlength('abc'));
+</script>
+</body>
+</html>
+

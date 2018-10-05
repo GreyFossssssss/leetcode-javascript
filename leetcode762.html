@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Number of Set Bits in Binary Representation</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number} L
+     * @param {number} R
+     * @return {number}
+     */
+    var countPrimeSetBits = function(L, R) {
+        var res=0;
+        for(var i=L;i<=R;i++){
+            var num=i.toString(2);
+            var sum=0;
+            for(var k=0;k<num.length;k++){
+                if(num.charAt(k)==1){
+                    sum++;
+                }
+            }
+            if(isPrimeNum(sum)&&sum!=1){
+                res++;
+            }
+        }
+        return res;
+    };
+    // 判断数字是否位质数
+    function isPrimeNum(num) {
+        for (var i = 2; i < num; i++) {
+            if (num%i==0){
+                return false;
+            }
+        };
+        return true;
+    }
+</script>
+</body>
+</html>

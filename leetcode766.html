@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>托普利茨矩阵</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[][]} matrix
+     * @return {boolean}
+     */
+     var isToeplitzMatrix = function(matrix) {
+        var len=matrix.length;
+        var col=matrix[0].length;
+        for(var i=0;i<len-1;i++){
+            for(var j =0;j<col-1;j++){
+                if(matrix[i][j]!=matrix[i+1][j+1]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    };l
+    var res=isToeplitzMatrix([[1,2,3,4],[5,1,2,3],[9,5,1,2]]);
+    console.log(res);
+</script>
+</body>
+</html>

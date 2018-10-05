@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Number of Set Bits in Binary Representation</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    var countBinarySubstrings = function(s) {
+        var num=0;
+        for(var i=0;i<s.length-2;i++){
+            for(var j=i+2;j<s.length;j=j+2){
+                var newnum=s.slice(i,j);
+                var numof1=0;
+                for(var k=0;k<newnum.length;j++){
+                    if(newnum.charAt(k)==1){
+                        numof1++;
+                    }
+                }
+                if(numof1*2==j-i){
+                    num++;
+                }
+
+            }
+        }
+        return num;
+    };
+</script>
+</body>
+</html>

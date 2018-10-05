@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最短字符间距</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string} S
+     * @param {character} C
+     * @return {number[]}
+     * 输入: S = "loveleetcode", C = 'e'
+       输出: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]
+     */
+     // 空间溢出
+    var shortestToChar = function(S, C) {
+        var res = [];
+        var Sarr=S.split('');
+        for(var i =0;i<Sarr.length;i++){
+          if(Sarr[i]==C) {
+            Sarr[i] = 0;  
+            res.push(i);
+          }
+        }
+        var len = res.length;
+        for(var j=0;j<len;j++){
+            if(j==0){
+                for(var k=0;k<res[0];k++){
+                    Sarr[k] = Math.abs(res[0]-k);
+                }
+            }
+            else if(j==len-1){
+                for(var k=res[len-1]+1;k<=Sarr.length;k++){
+                    Sarr[k] = Math.abs(res[j]-k);
+                }
+            }
+            for(var k =res[j]+1;k<res[j+1];k++){
+                Sarr[k] = Math.min(Math.abs(res[j]-k),Math.abs(res[j+1]-k));
+            }
+        }
+        return Sarr; 
+    };
+    // 
+    
+    var shortestToChar2 = function(S, C) {
+        let distances = []
+        // Calc Left
+        let CPointer = -1
+        for (let i=0; i<S.length; i++) {
+            if (S.charAt(i) === C) CPointer = i
+            if (CPointer < 0) {
+            distances.push(S.length)
+            } else {
+            distances.push(i - CPointer)
+            }
+        }
+        
+        // Calc right
+        CPointer = -1
+        for (let i=S.length-1; i>=0; i--) {
+            if (S.charAt(i) === C) CPointer = i
+            if (CPointer >= 0) {
+            distances[i] = Math.min(distances[i], CPointer - i)
+            }
+        }
+        return distances
+    };
+
+</script>
+</body>
+</html>

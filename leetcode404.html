@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum of Left Leaves</title>
+</head>
+<body>
+<script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {number}
+     */
+    var sumOfLeftLeaves = function(root) {
+        //提交没通过
+//        if(!root) return 0;
+//        var sum=0;
+//        function isleaf(r) {
+//            if(r==null) return 0;
+//            if(r.left==null&&r.right==null) return r.val;
+//        }
+//        sum=isleaf(root.left)+sumOfLeftLeaves(root.right);
+//        sumOfLeftLeaves(root.left);
+//        sumOfLeftLeaves(root.right);
+//        return sum;
+        var val = 0;
+        if(!root)return 0;
+        if (root.left && !root.left.left && !root.left.right) val = root.left.val;
+        return val + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
+    };
+</script>
+</body>
+</html>

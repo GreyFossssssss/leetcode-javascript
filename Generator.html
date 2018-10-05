@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>generator实现斐波那切数列</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+ var res = [];
+ function* fibonacci() {
+    let [prev, curr] = [0, 1]
+    yield prev
+    for (;;) {
+        [prev, curr] = [curr, prev + curr]
+        // 将中间值通过 yield 返回，并且保留函数执行的状态，因此可以非常简单的实现 fibonacci
+        yield curr
+    }
+}
+for (let n of fibonacci()) {
+    if (n > 1000) {
+        break
+    }
+   res.push(n);
+}
+console.log(res);
+</script>
+</body>
+</html>

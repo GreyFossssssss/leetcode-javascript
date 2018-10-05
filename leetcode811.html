@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子域名访问计数</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string[]} cpdomains
+     * @return {string[]}
+     * 输入:
+     ["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
+     输出:
+     ["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
+     */
+    var subdomainVisits = function(cpdomains) {
+        var res = [];
+        var tmp = {};
+        for(var i=0;i<cpdomains.length;i++){
+            var num = Number(cpdomains[i].split(' ')[0]);
+            var domain = cpdomains[i].split(' ')[1];
+            if(!tmp[domain]){
+                tmp[domain] = num ;
+            }
+            else tmp[domain] += num ;
+            var arr = domain.split('.');
+            var len =arr.length;
+            var domainson1 = domain.substring(domain.indexOf('.')+1);
+
+            if(!tmp[domainson1]){
+                tmp[domainson1] = num ;
+            }
+            else tmp[domainson1] += num ;
+            if(len>2) {
+                var domainson2 = domainson1.substring(domainson1.indexOf('.')+1);
+                if (!tmp[domainson2]) {
+                    tmp[domainson2] = num;
+                }
+                else tmp[domainson2] += num;
+            }
+        }
+        Object.keys(tmp).forEach(function (key) {
+            res.push(tmp[key]+' '+key) ;
+        })
+        return res;
+    };
+    var res=subdomainVisits(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]);
+    console.log(res);
+</script>
+</body>
+</html>

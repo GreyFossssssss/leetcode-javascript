@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>唯一摩尔斯密码词</title>
+</head>
+<body>
+<script>
+   /**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function(words) {
+    var res=[];
+    words.map((item,index)=>{
+        let flag=0;
+        res.map((i,j)=>{
+            if(i==item){
+                flag=1;
+            }
+        })
+        flag===1?res.push(translate(item.split())):null;
+    })
+    return res.length;
+};
+  /**
+ * @param {[]} words转换成的数组
+ * @return {number}
+ */
+var translate=function (w) {
+    var arr=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+    w.map((item,index)=>{
+        return arr[item.charCodeAt()-'a'.charCodeAt()];
+    })
+    return w.join();
+}
+   console.log(translate(['g','i','n']));
+   console.log(uniqueMorseRepresentations(["gin", "zen", "gig", "msg"]));
+</script>
+</body>
+</html>

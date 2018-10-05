@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Majority Element</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    var majorityElement = function(nums) {
+        var len=nums.length;
+        var moment=nums[0];
+        var num=0;
+        nums.sort();
+        for(var i=0;i<len;i++){
+           if(nums[i]==moment) {
+               num++;
+               if(2*num>len) {
+                   return moment;
+                   break;
+               }
+           }
+            else {
+               moment=nums[i];
+               num=1;
+           }
+        }
+    };
+    alert(majorityElement([-1,100,2,100,100,4,100]));
+</script>
+</body>
+</html>

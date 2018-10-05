@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distribute Candies</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} candies
+     * @return {number}
+     */
+    var distributeCandies = function(candies) {
+        candies.sort();
+        var res=[];
+        var len;
+        len=candies.length;
+        for(var i=0;i<len;i++){
+            if(res.indexOf(candies[i])==-1){
+                res.push(candies[i]);
+            }
+        }
+        return res.length>len/2?len/2:res.length;
+    };
+    alert(distributeCandies([1,1,1,1,2,2,2,3,3,3]));
+
+</script>
+</body>
+</html>

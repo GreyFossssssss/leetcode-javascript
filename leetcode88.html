@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合并两个有序数组</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+    输入:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+输出: [1,2,2,3,5,6]
+自写，未过
+ */
+ var merge = function(nums1, m, nums2, n) {
+     var res = [];
+     var left =0,right = 0;
+     while(left<m&&right<n){
+         if(nums1[left]<nums2[right]){
+             res.push(nums1[left++]);
+         }
+         else res.push(nums2[right++]);
+     }
+    
+     if(left>m-1){
+         res = res.concat(nums2.slice(right,n));
+        
+     }
+     else{
+         res = res.concat(nums1.slice(left,m));
+     }
+     return res;
+};
+console.log(merge([1,2,3,0,0,0],3,[2,5,6],3));
+
+//网上高票
+var merge2 = function(nums1, m, nums2, n) {
+    while(n){
+        nums1[m++]=nums2[--n];
+    }
+    nums1.sort(function(val1, val2){
+        return val1>val2?1:val1<val2?-1:0;
+    })
+}
+</script>
+</body>
+</html>

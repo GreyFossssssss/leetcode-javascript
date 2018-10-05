@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Binary Number with Alternating Bits</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number} n
+     * @return {boolean}
+     */
+    var hasAlternatingBits = function(n) {
+        var num=n.toString(2);
+        for(var i=0;i<num.length;i++){
+            if(num.charAt(i)==num.charAt(i+1)){
+                return false;
+            }
+        }
+        return true;
+    };
+</script>
+</body>
+</html>

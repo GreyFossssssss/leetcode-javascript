@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>较大分组的位置</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+
+/**
+ * @param {string} S
+ * @return {number[][]}
+ */
+ var largeGroupPositions = function(S) {
+    var res = [];
+    for(let i = 0;i<S.length;i++){
+        var tmp = [];
+        var nums = 1;
+        var j = i;
+        while(S.charAt(j+1)===S.charAt(j)){
+            nums ++;
+            j++;
+        }
+        if(nums>=3){
+           tmp.push(i);
+           tmp.push(j);
+           res.push(tmp);
+           i=i+nums-1;
+        }
+         
+    }
+    return res;
+};
+
+
+    
+</script>
+</body>
+</html>

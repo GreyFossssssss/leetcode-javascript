@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Judge Route Circle</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string} moves
+     * @return {boolean}
+     */
+    var judgeCircle = function(moves) {
+        var area=[0,0];
+        for(var i=0;i<moves.length;i++){
+            switch(moves.charAt(i)){
+                case 'L':area[0]--;break;
+                case 'R':area[0]++;break;
+                case 'U':area[1]++;break;
+                case 'D':area[1]--;break;
+            }
+            console.log(area);
+        }
+        if(area[0]==0&&area[1]==0) return true;
+        else return false;
+    };
+
+    console.log(judgeCircle('UD'));
+    console.log(judgeCircle('LL'));
+</script>
+</body>
+</html>

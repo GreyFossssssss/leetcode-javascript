@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {boolean}
+     */
+    var containsDuplicate = function(nums) {
+        for(var i=0;i<nums.length;i++){
+            if (nums.indexOf(nums[i])!=nums.lastIndexOf(nums[i])){
+                return true;
+            }
+        }
+        return false;
+    };
+</script>
+</body>
+</html>

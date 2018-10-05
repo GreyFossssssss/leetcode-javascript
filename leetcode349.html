@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intersection of Two Arrays</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} nums1
+     * @param {number[]} nums2
+     * @return {number[]}
+     */
+    var intersection = function(nums1, nums2) {
+        var len1=nums1.length;
+        nums1.sort();
+        var res=[];
+        for(var i=0;i<len1;i++){
+            if(nums2.indexOf(nums1[i])!=-1&&res[res.length-1]!=nums1[i])
+                res.push(nums1[i]);
+        }
+       return res;
+    };
+</script>
+</body>
+</html>

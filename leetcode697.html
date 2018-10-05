@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    var findShortestSubArray = function(nums) {
+        var res = nums.length;
+        var hash = {};
+        var max = 0;
+        var el;
+        var flag=0;
+        for(var i = 0,len = nums.length; i < len; i++ ) {
+            el = nums[i];
+            hash[el] === undefined ? hash[el] = 1 : (hash[el] ++);
+            if(hash[el] >= max){
+                max= hash[el];
+            }
+        }
+        Object.keys(hash).forEach(function(key){
+            if(hash[key]===max){
+                flag= 1;
+                var tmp=nums.lastIndexOf(Number(key))-nums.indexOf(Number(key))+1;
+                res = Math.min(res,tmp);
+            }
+        })
+        if(flag==0) return 1;
+        return res;
+    };
+    alert(findShortestSubArray([1, 2, 2, 3, 1]));
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Construct the Rectangle</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number} area
+     * @return {number[]}
+     */
+    var constructRectangle = function(area){
+        if(area==1) return [1,1];
+        else {
+            var res=[];
+            for(var i=1;i<Math.sqrt(area)+1;i++) {
+                if (area % i == 0) {
+                    if(i>area/i) {
+                        res[0] = i;
+                        res[1] = area / i;
+                    }
+                    else{
+                        res[1] = i;
+                        res[0] = area / i;
+                    }
+
+                }
+            }
+            return res;
+        }
+    };
+    alert(constructRectangle(4));
+</script>
+</body>
+</html>

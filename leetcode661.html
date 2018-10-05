@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片平滑器</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[][]} M
+ * @return {number[][]}
+ 包含整数的二维矩阵 M 表示一个图片的灰度。你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入)
+  ，平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。
+ */
+ var imageSmoother = function(M) {
+    const matrixClone = JSON.parse(JSON.stringify(M));
+    var len = M.length;
+    var col = M[0].length;
+    for(var i=0;i<len;i++){
+        for(var j=0;j<col;j++){
+            M[i][j] = calculateNew(matrixClone, i, j);
+        }
+    }
+    return M;
+};
+function calculateNew(matrix, rowIdx, colIdx) {
+    let nums =0;
+    let sum =0;
+    for(let i= rowIdx-1;i<=rowIdx+1;i++){
+        if(matrix[i]===undefined) continue;
+        for(let j =colIdx-1;j<=colIdx+1;j++){
+            if(matrix[i][j]===undefined) continue;
+            nums++;
+            sum+=matrix[i][j];
+        }
+    }
+    return nums===0?0:Math.floor(sum/nums);
+}
+</script>
+</body>
+</html>

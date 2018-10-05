@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-bit and 2-bit Characters</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} bits
+     * @return {boolean}
+     */
+    var isOneBitCharacter = function(bits) {
+        if(bits.length==1) return true;
+        if(bits.length==2) {
+            if(bits[0]==1) return false;
+            else return true;
+        }
+        else {
+            while(bits.length>2){
+                if(bits[0]==0) bits.splice(0,1);
+                else bits.splice(0,2);
+            }
+            if(bits[0]) return false;
+            else return true;
+        }
+
+    };
+    alert(isOneBitCharacter([1, 1, 1, 0]));
+   // other people's easy function
+
+    //ps slice(-1) 这个方法的思想就是把所有的两位都用x替换，然后取替换后的数组的最后一位判断，是x就是false，简单清晰！
+    var isOneBitCharacter2 = function(bits) {
+        if(bits.length == 1) return true;
+        return bits.join("").replace(/(11|10)/g, "x").slice(-1) != "x";
+    };
+    alert(isOneBitCharacter2([1, 1, 1, 0]));
+</script>
+</body>
+</html>

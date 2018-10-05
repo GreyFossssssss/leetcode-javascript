@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Time to Buy and Sell Stock II</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} prices
+     * @return {number}
+     */
+    var maxProfit = function(prices) {
+        var len=prices.length;
+        if(len<2) return 0;
+        var res=[];
+        var sum=0;
+        for(var i=0;i<len-1;i++){
+            res.push(prices[i+1]-prices[i]);
+        }
+        var lenNew=res.length;
+        for(var i=0;i<lenNew;i++){
+            if(res[i]>0){
+                sum+=res[i];
+            }
+        }
+        return sum;
+    };
+    alert(maxProfit([1,2]));
+</script>
+</body>
+</html>

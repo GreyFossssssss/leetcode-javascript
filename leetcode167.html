@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two Sum II - Input array is sorted</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[]} numbers
+     * @param {number} target
+     * @return {number[]}
+     */
+    var twoSum = function(numbers, target) {
+        var l=numbers.length, i=0, j=l-1;
+        while (numbers[i]+numbers[j] !== target) {
+            numbers[i]+numbers[j] < target ? i++ : j--;
+        }
+        return [i+1, j+1];
+        //超时
+//        var len=numbers.length;
+//        var res=[];
+//        for(var i=0;i<len;i++)
+//            for(var j=i+1;j<len;j++)
+//            {
+//                if(numbers[i]+numbers[j]==target) {
+//                    res.push(i+1);
+//                    res.push(j+1);
+//                }
+//            }
+//        return res;
+    };
+    alert(twoSum([2,5,7],9));
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>杨辉三角2</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[][]} grid
+     * @return {number}
+     */
+  /**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+ var generate = function(numRows) {
+        var res= [[1],[1,1]];
+        if(numRows==0) return [];
+        if(numRows==1) return [[1]];
+        if(numRows===2) return [[1],[1,1]];
+        if(numRows>2){
+           for(let i =3;i<numRows+1;i++){
+               res.push(getOneRows(res,i));
+           }
+        }
+        return res;
+    };
+    var getOneRows=function(currentArr,index){
+        var res=[1];
+        for(let i =1;i<index-1;i++){
+             val = currentArr[currentArr.length-1][i-1]+currentArr[currentArr.length-1][i];
+            res.push(val);
+          
+        }
+        res.push(1);
+        return res;
+    }
+    var getRow = function(rowIndex) {
+        return generate(rowIndex+1)[rowIndex];
+    };
+</script>
+</body>
+</html>

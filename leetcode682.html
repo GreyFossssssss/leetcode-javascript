@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BaseBall Game</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string[]} ops
+     * @return {number}
+     */
+    var calPoints = function(ops) {
+        //res用来存每轮的得分
+        var res=new Array();
+        for(var i=0;i<ops.length;i++){
+            switch (ops[i]){
+                case '+':
+                    res.push(res[res.length-1]+res[res.length-2]);break;
+                case 'D':{
+                    res.push(res[res.length-1]*2);
+                    break;
+                }
+                case 'C':
+                {
+                    res.pop();
+                    break;
+                }
+                default: {
+                   var  op=parseInt(ops[i]);
+                    res.push(op);
+                }
+            }
+        }
+
+        sum=res.reduce(function (a,b) {
+            return a+b;
+        })
+        return sum;
+    };
+    console.log(calPoints(["5","2","C","D","+"]));
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缺失数字</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number[][]} grid
+     * @return {number}
+     */
+  /**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var missingNumber = function(nums) {
+    var res =0,flag=0;
+    // 这边这样些是为了满足那些数组里面放字符串的数字  排序
+    nums.sort(function(a,b){
+        return Number(a)-Number(b);
+    });
+    // 如果是[0]输出1 所以得判断是否进行过if()里面的操作循环
+    for(var i =0;i<nums.length;i++){
+        if(i!=nums[i]){
+            res = i ;
+            flag =1;
+            break;
+        }
+    }
+    if(res ===0&&flag ==0){
+        res= nums.length;
+    }
+    return res;
+};
+</script>
+</body>
+</html>

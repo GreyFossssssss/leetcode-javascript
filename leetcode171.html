@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel Sheet Column Number</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+
+    var titleToNumber = function(s) {
+            var base='A'.charCodeAt();
+            var sum=0;
+            for(var i=0;i<s.length;i++){
+               sum+= (Math.pow(26,s.length-i-1))*(s.charCodeAt(i)-base+1);
+            }
+            return sum;
+    };
+    alert(titleToNumber('AB'));
+
+</script>
+</body>
+</html>

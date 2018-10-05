@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Range Addition II</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number} m
+     * @param {number} n
+     * @param {number[][]} ops
+     * @return {number}
+     */
+    var maxCount = function(m, n, ops) {
+        let minRow = m;
+        let minCol = n;
+
+        // find overlap of the operators
+        for (const op of ops) {
+            minRow = Math.min(minRow, op[0]);
+            minCol = Math.min(minCol, op[1]);
+        }
+
+        return minRow * minCol;
+    };
+</script>
+</body>
+</html>

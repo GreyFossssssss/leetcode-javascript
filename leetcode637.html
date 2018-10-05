@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Average of Levels in Binary Tree</title>
+</head>
+<body>
+<script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {number[]}
+     */
+    var averageOfLevels = function(root,level = 0, counts = []) {
+        if (!root) return;
+        counts[level] = counts[level] || { sum: 0, nodes: 0 };
+        counts[level].sum += root.val;
+        counts[level].nodes++;
+        averageOfLevels(root.left, level + 1, counts);
+        averageOfLevels(root.right, level + 1, counts);
+        return level || counts.map(count => count.sum / count.nodes);
+    };
+</script>
+</body>
+</html>

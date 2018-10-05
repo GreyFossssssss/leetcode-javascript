@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Number of Set Bits in Binary Representation</title>
+</head>
+<body>
+<script>
+    /**
+     * @param {number} N
+     * @return {number}
+     */
+    var rotatedDigits = function(N) {
+        let count = 0;
+
+        for (var i = 1;i <= N;i ++){
+
+            let isValid = true;
+            let isSame = true;
+
+            for (ch of (i + '')){
+                if (ch == '3' || ch == '4' || ch =='7'){
+                    isValid = false;
+                    break;
+                }
+
+                if (ch != '8' && ch != '0' && ch!= '1') {
+                    isSame = false;
+                }
+            }
+
+            if (isValid && !isSame) {
+                count++;
+            }
+        }
+
+        return count;
+    };
+
+    alert(rotatedDigits(12));
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>独特的电子邮件地址</title>
+</head>
+<body>
+<script>
+/**
+ * @param {string[]} emails
+ * @return {number}
+ */
+//  var numUniqueEmails = function(emails) { 
+//     const emailList = new Set(); 
+//     emails.forEach(item => { let tempArr = item.split('@') 
+//     const local = tempArr[0].split('+')[0].replace(/\./g, '')
+//     emailList.add(local + '@' + tempArr[1]) }) 
+//     return [...emailList].length 
+// };
+ var numUniqueEmails = function(emails) {
+    var res=[];
+    var regexp1=new RegExp('\.','gi');
+    for(let i=0;i<emails.length;i++){
+        var name=emails[i].split('@');
+        var tmpname=name[0].split('+')[0].replace(regexp1,'');
+        var email1=tmpname+'@'+name[1];
+        if(res.indexOf(email1)==-1){
+            res.push(email1);
+        }
+    }
+    return res.length;
+};
+var test=["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"];
+numUniqueEmails(test);
+</script>
+</body>
+</html>

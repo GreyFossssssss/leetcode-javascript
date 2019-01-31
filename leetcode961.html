@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重复n次的元素</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+ var repeatedNTimes = function(A) {
+        let tmp={},res;
+        A.forEach((item)=>{
+            console.log(item,'-----',tmp);
+            if(!tmp.hasOwnProperty(item)){
+                tmp[item]=1;
+            }
+            else {
+                res = item;
+                return res;
+            }
+        })
+        return res; 
+};
+var k = repeatedNTimes(
+[1,2,3,3]);
+console.log(k); 
+</script>
+</body>
+</html>

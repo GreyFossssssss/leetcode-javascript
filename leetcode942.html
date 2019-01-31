@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增减字符串匹配</title>
+</head>
+<body>
+<script>
+/**
+ * @param {string[]} emails
+ * @return {number}
+ */
+//  var numUniqueEmails = function(emails) { 
+//     const emailList = new Set(); 
+//     emails.forEach(item => { let tempArr = item.split('@') 
+//     const local = tempArr[0].split('+')[0].replace(/\./g, '')
+//     emailList.add(local + '@' + tempArr[1]) }) 
+//     return [...emailList].length 
+// };
+/**
+ * @param {string} S
+ * @return {number[]}
+ */
+ var diStringMatch = function(S) {
+    let res=[];
+    let len=S.length;
+    let times=i=0,j=len;
+    while(times<=len){
+        if(S.charAt(times)=='I') res.push(i++);
+        else res.push(j--);
+        times++;
+    }
+    return res;
+};
+var a=diStringMatch("IDID");
+console.log(a);
+</script>
+</body>
+</html>

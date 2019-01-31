@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按奇偶顺序排序数组2</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+ var sortArrayByParity = function(A) {
+    let odd=[],even=[],res=[];
+    for(let i=0;i<A.length;i++){
+        if(A[i]%2==0){
+            even.push(A[i]);
+        }
+        else odd.push(A[i]);
+    }
+    for(let j=0;j<odd.length;j++){
+        res.push(even[j]);
+        res.push(odd[j]);
+    }
+    return res;
+};
+console.log(sortArrayByParity([3,1,2,4]));
+</script>
+</body>
+</html>

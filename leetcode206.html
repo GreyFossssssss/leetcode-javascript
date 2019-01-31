@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反转链表</title>
+</head>
+<body>
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+
+function LinkedList() {
+    this.head = new ListNode('head'); //头节点
+}
+
+LinkedList.prototype.find = function(nodeVal) {
+    var currNode = this.head;
+    while (currNode.val != nodeVal) {
+        currNode = currNode.next;
+    }
+    return currNode;
+}
+
+LinkedList.prototype.insert = function(newNodeVal, nodeVal) {
+    var newNode = new ListNode(newNodeVal);
+    var current = this.find(nodeVal);
+    newNode.next = current.next;
+    current.next = newNode;
+}
+
+var reverseList = function(linkedList) {
+    var cur = linkedList.head,
+        prev = null,
+        cnt;
+
+    while (cur) {
+        cnt = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = cnt;
+    }
+
+    return linkedList;
+};
+
+var testLinkedList = new LinkedList();
+
+testLinkedList.insert('node1', 'head');
+testLinkedList.insert('node2', 'node1');
+testLinkedList.insert('node3', 'node2');
+testLinkedList.insert('node4', 'node3');
+testLinkedList.insert('node5', 'node4');
+
+reverseList(testLinkedList);
+</script>
+</body>
+</html>

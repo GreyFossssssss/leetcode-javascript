@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二进制间距</title>
+</head>
+<body>
+<script>
+/**
+ * @param {number} N
+ * @return {number}
+ */
+ var binaryGap = function(N) {
+    let tmp = ''+N.toString(2);
+    let index = -1;
+    let max =0;
+    for(let i =0 ;i<tmp.length;i++){
+        if(tmp.charAt(i)=='1'){
+            if(index == -1){
+                index = i;
+            }
+            else{
+                max = max>(i-index)? max: i-index;
+                index = i;
+            }
+        }
+    }
+    return max;
+};
+console.log(binaryGap(5));
+</script>
+</body>
+</html>
